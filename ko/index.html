@@ -1,1 +1,584 @@
-Version ko
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoMorePegasus — 국가 차원 사이버스파이 활동에 대응하는 글로벌 이니셔티브</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kaspersky: {
+                            dark: '#032b1f',
+                            card: '#083c2d',
+                            accent: '#00f2a1',
+                            accentHover: '#00d68f',
+                            lightText: '#e2f4ed',
+                            muted: '#92c2b1',
+                            border: '#115440'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #032b1f;
+            color: #ffffff;
+        }
+        .kaspersky-shape {
+            clip-path: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%);
+        }
+        .custom-glow {
+            box-shadow: 0 0 30px rgba(0, 242, 161, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-kaspersky-dark text-white min-h-screen flex flex-col selection:bg-kaspersky-accent selection:text-kaspersky-dark">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-kaspersky-card text-kaspersky-lightText text-xs sm:text-sm py-2 px-4 border-b border-kaspersky-border flex justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-kaspersky-accent animate-pulse"></span>
+                <span>국가 차원 스파이웨어 및 제로클릭 대응 오픈소스 이니셔티브</span>
+            </span>
+            <div class="hidden md:flex gap-6 text-xs text-kaspersky-muted">
+                <a href="#mvt" class="hover:text-kaspersky-accent transition-colors">MVT 툴킷</a>
+                <a href="#contacto" class="hover:text-kaspersky-accent transition-colors">협력 네트워크</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar Style Kaspersky -->
+    <header class="sticky top-0 z-50 bg-kaspersky-dark/95 backdrop-blur-md border-b border-kaspersky-border">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo (Inverted White/Mint) -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-kaspersky-accent flex items-center justify-center text-kaspersky-dark font-black text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        <i data-lucide="shield-alert" class="w-6 h-6 text-kaspersky-dark"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-2xl tracking-tight text-white flex items-center">
+                            NoMore<span class="text-kaspersky-accent">Pegasus</span>
+                        </span>
+                        <span class="text-[10px] text-kaspersky-muted uppercase tracking-widest -mt-1 font-semibold">안티 스파이웨어 이니셔티브</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#inicio" class="text-white hover:text-kaspersky-accent transition-colors">홈</a>
+                    <a href="#amenazas" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">위협</a>
+                    <a href="#herramientas" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">도구</a>
+                    <a href="#ecosistema" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">생태계</a>
+                    <a href="#contacto" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">제휴 문의</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#herramientas" class="bg-kaspersky-accent text-kaspersky-dark font-bold px-5 py-2.5 rounded-lg hover:bg-kaspersky-accentHover transition-all transform hover:-translate-y-0.5 shadow-lg flex items-center gap-2 text-sm">
+                        <i data-lucide="terminal" class="w-4 h-4"></i>
+                        도구 보기
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden text-kaspersky-lightText hover:text-white p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-kaspersky-card border-b border-kaspersky-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block text-white py-2 font-medium">홈</a>
+            <a href="#amenazas" class="block text-kaspersky-lightText py-2">위협</a>
+            <a href="#herramientas" class="block text-kaspersky-lightText py-2">도구</a>
+            <a href="#ecosistema" class="block text-kaspersky-lightText py-2">생태계</a>
+            <a href="#contacto" class="block text-kaspersky-lightText py-2">제휴 문의</a>
+            <a href="#herramientas" class="w-full mt-2 bg-kaspersky-accent text-kaspersky-dark font-bold py-2.5 rounded-lg flex items-center justify-center gap-2 text-sm">
+                <i data-lucide="terminal" class="w-4 h-4"></i>
+                도구 보기
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section (Kaspersky Inverted Layout) -->
+        <section id="inicio" class="relative py-16 lg:py-24 overflow-hidden border-b border-kaspersky-border">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Pill Switcher -->
+                        <div class="inline-flex p-1 bg-kaspersky-card rounded-xl border border-kaspersky-border gap-1">
+                            <span class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-kaspersky-accent text-kaspersky-dark shadow">
+                                공공 이니셔티브
+                            </span>
+                            <span class="px-4 py-1.5 rounded-lg text-xs font-semibold text-kaspersky-muted">
+                                사이버 무기 및 제로데이
+                            </span>
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            국가 차원 스파이웨어보다 항상 <span class="text-kaspersky-accent">한 발 앞선</span> 사이버 보안.
+                        </h1>
+
+                        <p class="text-lg text-kaspersky-lightText/90 leading-relaxed max-w-2xl">
+                            귀하의 기기와 조사 활동을 '제로 클릭(zero-click)' 감염 및 페가수스(Pegasus), 프레데터(Predator), 레인(Reign)과 같은 정부급 사이버 무기로부터 보호하십시오. 당사는 전 세계적인 개인정보 보호를 위해 필요한 도구와 침해 지표(IoC), 그리고 오픈소스 포렌식 분석 자료를 제공합니다.
+                        </p>
+
+                        <div class="pt-2 text-xs text-kaspersky-muted flex flex-wrap gap-4 items-center">
+                            <span>분석 지원 시스템:</span>
+                            <span class="bg-kaspersky-card border border-kaspersky-border px-2.5 py-1 rounded text-white flex items-center gap-1">
+                                <i data-lucide="apple" class="w-3.5 h-3.5 text-kaspersky-accent"></i> iOS / iPadOS
+                            </span>
+                            <span class="bg-kaspersky-card border border-kaspersky-border px-2.5 py-1 rounded text-white flex items-center gap-1">
+                                <i data-lucide="smartphone" class="w-3.5 h-3.5 text-kaspersky-accent"></i> Android
+                            </span>
+                        </div>
+
+                        <!-- CTA Group -->
+                        <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                            <a href="#herramientas" class="bg-kaspersky-accent text-kaspersky-dark font-bold px-8 py-4 rounded-xl hover:bg-kaspersky-accentHover transition-all transform hover:-translate-y-0.5 shadow-xl text-center flex items-center justify-center gap-2 text-base">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                탐지 도구 살펴보기
+                            </a>
+                            <a href="#amenazas" class="border border-kaspersky-border hover:border-kaspersky-accent text-white font-medium px-6 py-4 rounded-xl hover:bg-kaspersky-card transition-all text-center flex items-center justify-center gap-2">
+                                <i data-lucide="file-search" class="w-5 h-5 text-kaspersky-accent"></i>
+                                위협 보고서
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Graphic (Kaspersky Shaped Hexagon Frame) -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <!-- Inverted Geometry Frame -->
+                            <div class="kaspersky-shape bg-gradient-to-tr from-kaspersky-card via-kaspersky-border to-kaspersky-accent p-1 custom-glow">
+                                <div class="kaspersky-shape bg-kaspersky-dark p-6 sm:p-8 relative overflow-hidden">
+                                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-kaspersky-accent/10 rounded-full blur-2xl"></div>
+                                    
+                                    <!-- Embedded Interactive Graphic Mockup -->
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between border-b border-kaspersky-border pb-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                            </div>
+                                            <span class="text-xs font-mono text-kaspersky-accent">MVT-Forensic-Engine v2.1</span>
+                                        </div>
+
+                                        <div class="font-mono text-xs space-y-2 text-kaspersky-lightText">
+                                            <p class="text-kaspersky-muted">[+] Initializing iOS backup inspection...</p>
+                                            <p class="text-kaspersky-accent">[✓] Checking CoreGraphics / FORCEDENTRY artifacts...</p>
+                                            <p class="text-kaspersky-muted">[+] Matching domain IoCs against NSO Group database...</p>
+                                            <div class="p-3 bg-kaspersky-card rounded border border-kaspersky-accent/30 text-xs my-2">
+                                                <p class="text-red-400 font-bold flex items-center gap-1.5">
+                                                    <i data-lucide="alert-triangle" class="w-4 h-4"></i> ALERT: Anomaly Detected
+                                                </p>
+                                                <p class="text-kaspersky-lightText mt-1">Found suspended process: <code class="text-kaspersky-accent">com.apple.bh</code> (Known Pegasus Vector)</p>
+                                            </div>
+                                            <p class="text-emerald-400">[✓] Recommendation: Execute lockdown mode & isolate device.
+
+</p>
+                                        </div>
+
+                                        <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs text-kaspersky-muted">
+                                            <span>시스템 상태: <strong class="text-kaspersky-accent">보호됨</strong></span>
+                                            <span class="flex items-center gap-1 text-kaspersky-accent"><i data-lucide="activity" class="w-3.5 h-3.5"></i> 활성</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats / Recognition Banner (Kaspersky Style) -->
+        <section class="py-12 bg-kaspersky-card border-b border-kaspersky-border">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                    <div class="space-y-2 border-b md:border-b-0 md:border-r border-kaspersky-border pb-6 md:pb-0 pr-0 md:pr-6">
+                        <div class="text-3xl font-extrabold text-kaspersky-accent flex items-center justify-center md:justify-start gap-2">
+                            <i data-lucide="target" class="w-7 h-7"></i> 100% 제로클릭
+                        </div>
+                        <h4 class="font-semibold text-white">복합 위협 분석</h4>
+                        <p class="text-xs text-kaspersky-muted">최종 사용자의 상호작용이 필요 없는 익스플로잇을 탐지합니다.</p>
+                    </div>
+
+                    <div class="space-y-2 border-b md:border-b-0 md:border-r border-kaspersky-border pb-6 md:pb-0 pr-0 md:pr-6">
+                        <div class="text-3xl font-extrabold text-kaspersky-accent flex items-center justify-center md:justify-start gap-2">
+                            <i data-lucide="code-2" class="w-7 h-7"></i> MVT 통합
+                        </div>
+                        <h4 class="font-semibold text-white">개방형 포렌식 표준</h4>
+                        <p class="text-xs text-kaspersky-muted">Amnesty International Security Lab에서 검증한 방법론 기반.</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-3xl font-extrabold text-kaspersky-accent flex items-center justify-center md:justify-start gap-2">
+                            <i data-lucide="globe" class="w-7 h-7"></i> 글로벌 네트워크
+                        </div>
+                        <h4 class="font-semibold text-white">다분야 협력</h4>
+                        <p class="text-xs text-kaspersky-muted">학술 연구소, 인권 단체 및 EDR을 연결합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Analyzed Threats (Cards) -->
+        <section id="amenazas" class="py-20 border-b border-kaspersky-border">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        조사 중인 사이버 무기 및 스파이웨어 <span class="text-kaspersky-accent">현황</span>
+                    </h2>
+                    <p class="text-kaspersky-lightText/80 text-base">
+                        정부 차원 스파이 활동 시장의 주요 행위자들의 기능 구조, C2 도메인 및 감염 벡터를 분석합니다.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Pegasus Card -->
+                    <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-5 group-hover:scale-110 transition-transform">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">NSO Group</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">Pegasus</h3>
+                            <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
+                                피해자의 상호작용 없이도 메시지, 사진, 통화를 추출하고 마이크/카메라를 실시간으로 활성화할 수 있는 스파이웨어.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
+                            <span>Vector: 제로클릭 iMessage</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-kaspersky-accent group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Predator Card -->
+                    <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 mb-5 group-hover:scale-110 transition-transform">
+                                <i data-lucide="bug" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">Cytrox / Intellexa</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">Predator</h3>
+                            <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
+                                통신망을 통해 조작된 링크나 HTTP 트래픽 삽입 공격을 이용하는 지속형 스파이 플랫폼.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
+                            <span>벡터: 원클릭 / MITM</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-kaspersky-accent group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Reign Card -->
+                    <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">QuaDream</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">Reign</h3>
+                            <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
+                                메모리 흔적을 스스로 제거하고 iOS 기기에서 기존 분석을 회피하도록 설계된 고도의 은밀한 도구.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
+                            <span>벡터: 캘린더 초대</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-kaspersky-accent group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- FORCEDENTRY Card -->
+                    <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-kaspersky-accent/10 border border-kaspersky-accent/30 flex items-center justify-center text-kaspersky-accent mb-5 group-hover:scale-110 transition-transform">
+                                <i data-lucide="zap" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">제로데이 익스플로잇</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-3">FORCEDENTRY</h3>
+                            <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
+                                Apple CoreGraphics 내부에서 CPU 논리 아키텍처를 에뮬레이션하는 PDF/JBIG2 이미지 압축 해제 패치 주입.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
+                            <span>유형: CVE-2021-30860</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-kaspersky-accent group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Forensic Tools (MVT & Scanners) -->
+        <section id="herramientas" class="py-20 bg-kaspersky-card/40 border-b border-kaspersky-border">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-kaspersky-accent/10 border border-kaspersky-accent/30 text-kaspersky-accent text-xs font-semibold">
+                            <i data-lucide="wrench" class="w-3.5 h-3.5"></i> 오픈 탐지 스위트
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                            모바일 포렌식 분석 및 검증 도구
+                        </h2>
+                        <p class="text-kaspersky-lightText/90 leading-relaxed text-sm sm:text-base">
+                            Amnesty International의 <strong class="text-white">Mobile Verification Toolkit(MVT)</strong> 및 Kaspersky, Citizen Lab 등 선도 연구소가 개발한 침해 지표(IoC) 스캐너와의 직접 통합.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-kaspersky-card border border-kaspersky-border">
+                                <div class="p-2 bg-kaspersky-accent/10 text-kaspersky-accent rounded-lg mt-1">
+                                    <i data-lucide="terminal" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">MVT (Mobile Verification Toolkit)</h4>
+                                    <p class="text-xs text-kaspersky-muted mt-0.5">iTunes 백업, Android 덤프(ADB) 및 SQLite 데이터베이스를 분석하여 Pegasus 아티팩트를 찾습니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-kaspersky-card border border-kaspersky-border">
+                                <div class="p-2 bg-kaspersky-accent/10 text-kaspersky-accent rounded-lg mt-1">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-sm">Kaspersky Triangle Check / IoC 스캐너</h4>
+                                    <p class="text-xs text-kaspersky-muted mt-0.5">OS 덤프에서 "Operation Triangulation" 작전의 흔적을 자동으로 탐지하는 유틸리티.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code / Quickstart Interactive Window -->
+                    <div class="lg:col-span-6">
+                        <div class="bg-kaspersky-dark rounded-2xl border border-kaspersky-border p-6 shadow-2xl space-y-4">
+                            <div class="flex justify-between items-center border-b border-kaspersky-border pb-4">
+                                <span class="text-xs font-bold text-white flex items-center gap-2">
+                                    <i data-lucide="terminal" class="w-4 h-4 text-kaspersky-accent"></i> MVT 빠른 실행 가이드
+                                </span>
+                                <span class="text-[10px] bg-kaspersky-card px-2 py-1 rounded text-kaspersky-muted">Python 3.10+</span>
+                            </div>
+
+                            <div class="space-y-3 font-mono text-xs text-kaspersky-lightText">
+                                <p class="text-kaspersky-muted"># 1. Python 패키지 관리자를 통해 MVT 설치</p>
+                                <div class="bg-kaspersky-card p-3 rounded border border-kaspersky-border text-kaspersky-accent font-semibold">
+                                    $ pip install mvt
+                                </div>
+
+                                <p class="text-kaspersky-muted"># 2. Pegasus 및 Predator의 최신 IoC 다운로드</p>
+                                <div class="bg-kaspersky-card p-3 rounded border border-kaspersky-border text-kaspersky-accent font-semibold">
+                                    $ mvt-ios download-iocs
+                                </div>
+
+                                <p class="text-kaspersky-muted"># 3. 미리 추출한 iOS 백업 분석</p>
+                                <div class="bg-kaspersky-card p-3 rounded border border-kaspersky-border text-kaspersky-accent font-semibold">
+                                    $ mvt-ios check-backup --iocs iocs/pegasus.stix2 /path/to/backup
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex justify-between items-center text-xs">
+                                <span class="text-kaspersky-muted">기술 지원이 필요하신가요?</span>
+                                <a href="https://github.com/mvt-project/mvt" target="_blank" class="text-kaspersky-accent font-bold hover:underline flex items-center gap-1">
+                                    MVT 공식 저장소 보기 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Ecosystem & Collaboration Partners -->
+        <section id="ecosistema" class="py-20 border-b border-kaspersky-border">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        생태계 ~의 <span class="text-kaspersky-accent">글로벌 협력</span>
+                    </h2>
+                    <p class="text-kaspersky-lightText/80 text-base">
+                        NoMoreRansom 모델에서 영감을 받은 NoMorePegasus는 민간 부문, 시민 단체 및 글로벌 기관 간의 협력 방어 네트워크를 구축하는 것을 목표로 합니다.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="bg-kaspersky-card p-6 rounded-xl border border-kaspersky-border flex flex-col items-center justify-center text-center hover:border-kaspersky-accent transition-all group">
+                        <i data-lucide="shield-alert" class="w-10 h-10 text-kaspersky-accent mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white text-sm">Amnesty Security Lab</h4>
+                        <span class="text-[11px] text-kaspersky-muted mt-1">포렌식 조사</span>
+                    </div>
+
+                    <div class="bg-kaspersky-card p-6 rounded-xl border border-kaspersky-border flex flex-col items-center justify-center text-center hover:border-kaspersky-accent transition-all group">
+                        <i data-lucide="graduation-cap" class="w-10 h-10 text-kaspersky-accent mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white text-sm">The Citizen Lab</h4>
+                        <span class="text-[11px] text-kaspersky-muted mt-1">토론토 대학교</span>
+                    </div>
+
+                    <div class="bg-kaspersky-card p-6 rounded-xl border border-kaspersky-border flex flex-col items-center justify-center text-center hover:border-kaspersky-accent transition-all group">
+                        <i data-lucide="lock" class="w-10 h-10 text-kaspersky-accent mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white text-sm">Kaspersky GReAT</h4>
+                        <span class="text-[11px] text-kaspersky-muted mt-1">Investigación de 위협</span>
+                    </div>
+
+                    <div class="bg-kaspersky-card p-6 rounded-xl border border-kaspersky-border flex flex-col items-center justify-center text-center hover:border-kaspersky-accent transition-all group">
+                        <i data-lucide="search" class="w-10 h-10 text-kaspersky-accent mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white text-sm">Google TAG</h4>
+                        <span class="text-[11px] text-kaspersky-muted mt-1">위협 분석 그룹</span>
+                    </div>
+
+                    <div class="bg-kaspersky-card p-6 rounded-xl border border-kaspersky-border flex flex-col items-center justify-center text-center hover:border-kaspersky-accent transition-all group">
+                        <i data-lucide="heart-handshake" class="w-10 h-10 text-kaspersky-accent mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white text-sm">Access Now</h4>
+                        <span class="text-[11px] text-kaspersky-muted mt-1">디지털 보안 헬프라인</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Contact & Proposals Section -->
+        <section id="contacto" class="py-20 bg-kaspersky-card/20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <div class="bg-kaspersky-card border border-kaspersky-border rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-kaspersky-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="text-center space-y-4 mb-10">
+                        <span class="text-xs font-bold uppercase tracking-widest text-kaspersky-accent">파트너로 함께하세요</span>
+                        <h2 class="text-3xl font-extrabold text-white">제안 및 제휴 접수</h2>
+                        <p class="text-sm text-kaspersky-lightText/80 max-w-xl mx-auto">
+                            사이버 보안 연구소, 인권 기관을 대표하거나 독립 연구원이신가요? 협력을 위해 연락해 주세요.
+                        </p>
+                    </div>
+
+                    <form onsubmit="event.preventDefault(); alert('제안서가 성공적으로 전송되었습니다. 곧 연락드리겠습니다.');" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">이름 / 조직</label>
+                                <input type="text" required placeholder="예: Security Research Lab" class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">기관 이메일</label>
+                                <input type="email" required placeholder="contact@organization.org" class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">기관 유형</label>
+                            <select class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors">
+                                <option>인권 단체 / NGO</option>
+                                <option>민간 사이버 보안 기업 / EDR</option>
+                                <option>학술 연구소</option>
+                                <option>사이버 보안 기관</option>
+                                <option>독립 연구원 / 악성코드 분석가</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">메시지 / 제안 요약</label>
+                            <textarea rows="4" required placeholder="NoMorePegasus와 어떻게 협력하고 싶은지 간략히 설명해 주세요..." class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-kaspersky-accent text-kaspersky-dark font-bold py-4 rounded-xl hover:bg-kaspersky-accentHover transition-all shadow-lg text-center flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            협력 제안서 보내기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Style Kaspersky -->
+    <footer class="bg-kaspersky-dark border-t border-kaspersky-border py-12 text-kaspersky-muted text-xs">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded bg-kaspersky-accent flex items-center justify-center text-kaspersky-dark font-bold text-xs">
+                            N
+                        </div>
+                        <span class="font-bold text-white text-base">NoMorePegasus</span>
+                    </div>
+                    <p class="text-kaspersky-muted leading-relaxed">
+                        국가 차원 모바일 사이버 무기의 비밀을 밝히고 탐지하기 위한 자유롭고 협력적인 이니셔티브.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-3">리소스</h5>
+                    <ul class="space-y-2">
+                        <li><a href="https://github.com/mvt-project/mvt" target="_blank" class="hover:text-kaspersky-accent">MVT Github 저장소</a></li>
+                        <li><a href="https://github.com/KasperskyLab/triangle_check" target="_blank" class="hover:text-kaspersky-accent">Kaspersky TriangleCheck</a></li>
+                        <li><a href="https://citizenlab.ca" target="_blank" class="hover:text-kaspersky-accent">Citizen Lab 보고서</a></li>
+                        <li><a href="https://www.accessnow.org/help/" target="_blank" class="hover:text-kaspersky-accent">Access Now 헬프라인</a></li>
+                        <li><a href="https://www.amnesty.org/en/latest/research/2021/09/pegasus-spyware-iphone-attack/" target="_blank" class="hover:text-kaspersky-accent">Amnesty Security Lab</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-3">법적 및 윤리적 프레임워크</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-kaspersky-accent">IoC의 책임 있는 사용</a></li>
+                        <li><a href="#" class="hover:text-kaspersky-accent">개인정보 처리방침</a></li>
+                        <li><a href="#" class="hover:text-kaspersky-accent">협조적 공개</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-3">커뮤니티</h5>
+                    <p class="mb-3">공개 저장소에 참여하여 새로운 IoC와 YARA 규칙을 제출하세요.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="p-2 bg-kaspersky-card rounded border border-kaspersky-border text-white hover:text-kaspersky-accent">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="p-2 bg-kaspersky-card rounded border border-kaspersky-border text-white hover:text-kaspersky-accent">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-kaspersky-border flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>© 2026 NoMorePegasus Initiative. NoMoreRansom에서 영감을 받았습니다. 사이버 보안 교육 및 방어 프로젝트.</p>
+                <p>인권 보호를 위해 만들어졌습니다.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons & Mobile Menu Toggle -->
+    <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
