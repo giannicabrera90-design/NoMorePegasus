@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoMorePegasus — Global Initiative Against State-Level Cyberespionage</title>
+    <title>NoMorePegasus — Global Initiative Against State-Sponsored Mercenary Spyware</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -45,6 +45,18 @@
         .custom-glow {
             box-shadow: 0 0 30px rgba(0, 242, 161, 0.15);
         }
+
+        /* --- FALLBACK DE SEGURIDAD (CSS INYECTADO CONTRA BLOQUEOS DE CDN) --- */
+        body {
+            background-color: #032b1f !important;
+            color: #ffffff !important;
+        }
+        .bg-kaspersky-dark { background-color: #032b1f !important; }
+        .bg-kaspersky-card { background-color: #083c2d !important; }
+        .text-kaspersky-accent, .text-emerald-300 { color: #00f2a1 !important; }
+        .bg-kaspersky-accent { background-color: #00f2a1 !important; color: #032b1f !important; }
+        .border-kaspersky-border { border-color: #115440 !important; }
+        .text-kaspersky-muted { color: #92c2b1 !important; }
     </style>
 </head>
 <body class="bg-kaspersky-dark text-white min-h-screen flex flex-col selection:bg-kaspersky-accent selection:text-kaspersky-dark">
@@ -54,16 +66,16 @@
         <div class="container mx-auto flex justify-between items-center">
             <span class="flex items-center gap-2">
                 <span class="inline-block w-2 h-2 rounded-full bg-kaspersky-accent animate-pulse"></span>
-                <span>State-Level & Zero-Click Open-Source Anti-Spyware Initiative</span>
+                <span>Open-Source Initiative Against State-Grade Spyware & Zero-Clicks</span>
             </span>
-            <div class="hidden md:flex gap-6 text-xs text-kaspersky-muted">
+            <div class="hidden md:flex gap-6 text-xs text-kaspersky-muted items-center">
                 <a href="#mvt" class="hover:text-kaspersky-accent transition-colors">MVT Toolkit</a>
                 <a href="#contacto" class="hover:text-kaspersky-accent transition-colors">Collaboration Network</a>
             </div>
         </div>
     </div>
 
-    <!-- Header / Navbar Style Kaspersky -->
+    <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-kaspersky-dark/95 backdrop-blur-md border-b border-kaspersky-border">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -81,26 +93,48 @@
                 </a>
 
                 <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
                     <a href="#inicio" class="text-white hover:text-kaspersky-accent transition-colors">Home</a>
                     <a href="#amenazas" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">Threats</a>
+                    <a href="#reporte" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">Intelligence Briefing</a>
                     <a href="#herramientas" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">Tools</a>
                     <a href="#ecosistema" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">Ecosystem</a>
-                    <a href="#contacto" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">Contact Partners</a>
+                    <a href="#contacto" class="text-kaspersky-lightText hover:text-kaspersky-accent transition-colors">Alliances</a>
                 </nav>
 
-                <!-- Action Button -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <a href="#herramientas" class="bg-kaspersky-accent text-kaspersky-dark font-bold px-5 py-2.5 rounded-lg hover:bg-kaspersky-accentHover transition-all transform hover:-translate-y-0.5 shadow-lg flex items-center gap-2 text-sm">
-                        <i data-lucide="terminal" class="w-4 h-4"></i>
-                        View Tools
-                    </a>
-                </div>
+                <!-- Language Selector Dropdown -->
+                <div class="flex items-center gap-3">
+                    <div class="relative inline-block text-left">
+                        <select onchange="if(this.value) window.location.href = this.value;" 
+                                class="bg-[#032b1f] border border-emerald-500/40 text-emerald-300 text-xs font-semibold rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#00f2a1] focus:outline-none cursor-pointer shadow-md hover:border-[#00f2a1] transition-colors">
+                            <option value="/" selected>🌐 English (Default)</option>
+                            <option value="/es/">Español</option>
+                            <option value="/fr/">Français</option>
+                            <option value="/de/">Deutsch</option>
+                            <option value="/pt/">Português</option>
+                            <option value="/it/">Italiano</option>
+                            <option value="/ru/">Русский</option>
+                            <option value="/ar/">العربية</option>
+                            <option value="/zh/">中文</option>
+                            <option value="/ja/">日本語</option>
+                            <option value="/ko/">한국어</option>
+                            <option value="/uk/">Українська</option>
+                            <option value="/pl/">Polski</option>
+                            <option value="/nl/">Nederlands</option>
+                            <option value="/tr/">Türkçe</option>
+                        </select>
+                    </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn" class="md:hidden text-kaspersky-lightText hover:text-white p-2">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+                    <a href="#herramientas" class="hidden sm:flex bg-kaspersky-accent text-kaspersky-dark font-bold px-4 py-2 rounded-lg hover:bg-kaspersky-accentHover transition-all shadow-lg items-center gap-2 text-xs">
+                        <i data-lucide="terminal" class="w-4 h-4"></i>
+                        Tools
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-btn" class="md:hidden text-kaspersky-lightText hover:text-white p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -108,26 +142,22 @@
         <div id="mobile-menu" class="hidden md:hidden bg-kaspersky-card border-b border-kaspersky-border px-4 pt-2 pb-6 space-y-3">
             <a href="#inicio" class="block text-white py-2 font-medium">Home</a>
             <a href="#amenazas" class="block text-kaspersky-lightText py-2">Threats</a>
+            <a href="#reporte" class="block text-kaspersky-lightText py-2">Intelligence Briefing</a>
             <a href="#herramientas" class="block text-kaspersky-lightText py-2">Tools</a>
             <a href="#ecosistema" class="block text-kaspersky-lightText py-2">Ecosystem</a>
-            <a href="#contacto" class="block text-kaspersky-lightText py-2">Contact Partners</a>
-            <a href="#herramientas" class="w-full mt-2 bg-kaspersky-accent text-kaspersky-dark font-bold py-2.5 rounded-lg flex items-center justify-center gap-2 text-sm">
-                <i data-lucide="terminal" class="w-4 h-4"></i>
-                View Tools
-            </a>
+            <a href="#contacto" class="block text-kaspersky-lightText py-2">Alliances</a>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="flex-grow">
-        <!-- Hero Section (Kaspersky Inverted Layout) -->
+        <!-- Hero Section -->
         <section id="inicio" class="relative py-16 lg:py-24 overflow-hidden border-b border-kaspersky-border">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     
                     <!-- Left Hero Content -->
                     <div class="lg:col-span-7 space-y-6">
-                        <!-- Pill Switcher -->
                         <div class="inline-flex p-1 bg-kaspersky-card rounded-xl border border-kaspersky-border gap-1">
                             <span class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-kaspersky-accent text-kaspersky-dark shadow">
                                 Public Initiative
@@ -138,15 +168,15 @@
                         </div>
 
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                            Cybersecurity that's always <span class="text-kaspersky-accent">one step ahead</span> of state-level spyware.
+                            Cybersecurity that is always <span class="text-kaspersky-accent">one step ahead</span> of state spyware.
                         </h1>
 
                         <p class="text-lg text-kaspersky-lightText/90 leading-relaxed max-w-2xl">
-                            Keep your devices and investigations free from <strong class="text-white">Zero-Click</strong> infections and state-sponsored cyber weapons like <span class="text-kaspersky-accent font-semibold">Pegasus, Predator and Reign</span>. We offer open-source tools, IoCs and forensic analysis to protect global privacy.
+                            Keep your devices and investigations safe from <strong class="text-white">Zero-Click</strong> exploits and government cyberweapons like <span class="text-kaspersky-accent font-semibold">Pegasus, Predator, and Reign</span>. We offer open forensic tools, IoCs, and threat analysis to protect global privacy.
                         </p>
 
                         <div class="pt-2 text-xs text-kaspersky-muted flex flex-wrap gap-4 items-center">
-                            <span>Supported Systems for Analysis:</span>
+                            <span>Supported systems for analysis:</span>
                             <span class="bg-kaspersky-card border border-kaspersky-border px-2.5 py-1 rounded text-white flex items-center gap-1">
                                 <i data-lucide="apple" class="w-3.5 h-3.5 text-kaspersky-accent"></i> iOS / iPadOS
                             </span>
@@ -161,22 +191,20 @@
                                 <i data-lucide="shield-check" class="w-5 h-5"></i>
                                 Explore Detection Tools
                             </a>
-                            <a href="#amenazas" class="border border-kaspersky-border hover:border-kaspersky-accent text-white font-medium px-6 py-4 rounded-xl hover:bg-kaspersky-card transition-all text-center flex items-center justify-center gap-2">
+                            <a href="#reporte" class="border border-kaspersky-border hover:border-kaspersky-accent text-white font-medium px-6 py-4 rounded-xl hover:bg-kaspersky-card transition-all text-center flex items-center justify-center gap-2">
                                 <i data-lucide="file-search" class="w-5 h-5 text-kaspersky-accent"></i>
-                                Threat Reports
+                                Intelligence Briefing
                             </a>
                         </div>
                     </div>
 
-                    <!-- Right Hero Graphic (Kaspersky Shaped Hexagon Frame) -->
+                    <!-- Right Hero Graphic -->
                     <div class="lg:col-span-5 relative">
                         <div class="relative mx-auto max-w-md lg:max-w-none">
-                            <!-- Inverted Geometry Frame -->
                             <div class="kaspersky-shape bg-gradient-to-tr from-kaspersky-card via-kaspersky-border to-kaspersky-accent p-1 custom-glow">
                                 <div class="kaspersky-shape bg-kaspersky-dark p-6 sm:p-8 relative overflow-hidden">
                                     <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-kaspersky-accent/10 rounded-full blur-2xl"></div>
                                     
-                                    <!-- Embedded Interactive Graphic Mockup -->
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between border-b border-kaspersky-border pb-3">
                                             <div class="flex items-center gap-2">
@@ -195,7 +223,7 @@
                                                 <p class="text-red-400 font-bold flex items-center gap-1.5">
                                                     <i data-lucide="alert-triangle" class="w-4 h-4"></i> ALERT: Anomaly Detected
                                                 </p>
-                                                <p class="text-kaspersky-lightText mt-1">Found suspended process: <code class="text-kaspersky-accent">com.apple.bh</code> (Known Pegasus Vector)</p>
+                                                <p class="text-kaspersky-lightText mt-1">Found process: <code class="text-kaspersky-accent">com.apple.bh</code> (Known Pegasus Vector)</p>
                                             </div>
                                             <p class="text-emerald-400">[✓] Recommendation: Execute lockdown mode & isolate device.</p>
                                         </div>
@@ -214,7 +242,7 @@
             </div>
         </section>
 
-        <!-- Stats / Recognition Banner (Kaspersky Style) -->
+        <!-- Stats Section -->
         <section class="py-12 bg-kaspersky-card border-b border-kaspersky-border">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
@@ -223,7 +251,7 @@
                             <i data-lucide="target" class="w-7 h-7"></i> 100% Zero-Click
                         </div>
                         <h4 class="font-semibold text-white">Complex Threat Analysis</h4>
-                        <p class="text-xs text-kaspersky-muted">Detection of exploits that don't require user interaction.</p>
+                        <p class="text-xs text-kaspersky-muted">Detecting exploits that require zero user interaction.</p>
                     </div>
 
                     <div class="space-y-2 border-b md:border-b-0 md:border-r border-kaspersky-border pb-6 md:pb-0 pr-0 md:pr-6">
@@ -238,27 +266,27 @@
                         <div class="text-3xl font-extrabold text-kaspersky-accent flex items-center justify-center md:justify-start gap-2">
                             <i data-lucide="globe" class="w-7 h-7"></i> Global Network
                         </div>
-                        <h4 class="font-semibold text-white">Multisectorial Collaboration</h4>
-                        <p class="text-xs text-kaspersky-muted">Connecting academic laboratories, human rights NGOs, and EDRs.</p>
+                        <h4 class="font-semibold text-white">Multisector Collaboration</h4>
+                        <p class="text-xs text-kaspersky-muted">Uniting academic labs, human rights NGOs, and security vendors.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 1: Analyzed Threats (Cards) -->
+        <!-- Section 1: Analyzed Threats -->
         <section id="amenazas" class="py-20 border-b border-kaspersky-border">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-                        Cyberweapons and Spyware under <span class="text-kaspersky-accent">Investigation</span>
+                        Mercenary Spyware & Cyberweapons <span class="text-kaspersky-accent">Under Investigation</span>
                     </h2>
                     <p class="text-kaspersky-lightText/80 text-base">
-                        We analyze the functional structure, C2 domains, and infection vectors of the main actors in the government surveillance market.
+                        We analyze the functional architecture, C2 domains, and infection vectors of top commercial threat actors.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Pegasus Card -->
+                    <!-- Pegasus -->
                     <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
                         <div>
                             <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-5 group-hover:scale-110 transition-transform">
@@ -267,7 +295,7 @@
                             <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">NSO Group</span>
                             <h3 class="text-xl font-bold text-white mt-1 mb-3">Pegasus</h3>
                             <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
-                                Spyware capable of extracting messages, photos, calls, and activating microphone/camera in real-time without requiring victim interaction.
+                                Extracts messages, photos, calls, and activates microphone/camera silently in real-time with zero victim interaction.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
@@ -276,7 +304,7 @@
                         </div>
                     </div>
 
-                    <!-- Predator Card -->
+                    <!-- Predator -->
                     <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
                         <div>
                             <div class="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 mb-5 group-hover:scale-110 transition-transform">
@@ -285,7 +313,7 @@
                             <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">Cytrox / Intellexa</span>
                             <h3 class="text-xl font-bold text-white mt-1 mb-3">Predator</h3>
                             <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
-                                Persistent surveillance platform that uses manipulated links from telecommunications networks or HTTP traffic injection attacks.
+                                Persistent espionage platform using manipulated links via telco networks or HTTP traffic injection.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
@@ -294,7 +322,7 @@
                         </div>
                     </div>
 
-                    <!-- Reign Card -->
+                    <!-- Reign -->
                     <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
                         <div>
                             <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
@@ -303,7 +331,7 @@
                             <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">QuaDream</span>
                             <h3 class="text-xl font-bold text-white mt-1 mb-3">Reign</h3>
                             <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
-                                Highly stealthy tool designed to automatically remove memory traces and evade traditional analysis on iOS devices.
+                                Stealthy tool designed to self-remove memory traces and evade traditional iOS forensic analysis.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
@@ -312,16 +340,16 @@
                         </div>
                     </div>
 
-                    <!-- FORCEDENTRY Card -->
+                    <!-- FORCEDENTRY -->
                     <div class="bg-kaspersky-card rounded-2xl p-6 border border-kaspersky-border hover:border-kaspersky-accent transition-all group flex flex-col justify-between">
                         <div>
                             <div class="w-12 h-12 rounded-xl bg-kaspersky-accent/10 border border-kaspersky-accent/30 flex items-center justify-center text-kaspersky-accent mb-5 group-hover:scale-110 transition-transform">
                                 <i data-lucide="zap" class="w-6 h-6"></i>
                             </div>
-                            <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">Exploit Zero-Day</span>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-kaspersky-accent">Zero-Day Exploit</span>
                             <h3 class="text-xl font-bold text-white mt-1 mb-3">FORCEDENTRY</h3>
                             <p class="text-xs text-kaspersky-lightText/80 leading-relaxed mb-4">
-                                 Injection of PDF/JBIG2 image decompression patches that emulated a logical CPU architecture within Apple CoreGraphics.
+                                PDF/JBIG2 image decompression patch injection emulating a virtual CPU inside Apple CoreGraphics.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-kaspersky-border flex justify-between items-center text-xs font-medium text-kaspersky-muted">
@@ -333,7 +361,109 @@
             </div>
         </section>
 
-        <!-- Section 2: Forensic Tools (MVT & Scanners) -->
+        <!-- Section 2: Threat Intelligence Report & Multi-OS Hardening -->
+        <section id="reporte" class="py-20 border-b border-kaspersky-border bg-kaspersky-dark">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="inline-block px-3 py-1 bg-kaspersky-card border border-kaspersky-accent/30 text-kaspersky-accent rounded-full text-xs font-mono tracking-widest uppercase">
+                        Threat Intelligence Briefing
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                        Mercenary Spyware, Exploits & Defense Protocols
+                    </h2>
+                    <p class="text-kaspersky-lightText/80 text-sm sm:text-base">
+                        Detailed breakdown of Zero-Day, Zero-Click, and AdFection attack vectors along with hardening countermeasures across all operating systems.
+                    </p>
+                </div>
+
+                <!-- Threat Analysis Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <!-- Zero-Click Exploits -->
+                    <div class="bg-kaspersky-card border border-kaspersky-border rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                        <div class="flex items-center gap-3 mb-4 text-kaspersky-accent">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                            <h3 class="text-xl font-bold text-white">Zero-Click Exploits</h3>
+                        </div>
+                        <p class="text-kaspersky-lightText/80 text-xs sm:text-sm leading-relaxed">
+                            Silent attacks like <strong>FORCEDENTRY</strong> and <strong>BlastPass</strong> exploiting image rendering libraries (CoreGraphics, WebKit) and messaging protocols (iMessage, WhatsApp) to execute code remotely without user interaction.
+                        </p>
+                    </div>
+
+                    <!-- AdFection Threat (Citizen Lab) -->
+                    <div class="bg-kaspersky-card border border-kaspersky-accent/40 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                        <div class="flex items-center gap-3 mb-4 text-kaspersky-accent">
+                            <i data-lucide="radio" class="w-6 h-6"></i>
+                            <h3 class="text-xl font-bold text-white">AdFection (Ad-Networks)</h3>
+                        </div>
+                        <p class="text-kaspersky-lightText/80 text-xs sm:text-sm leading-relaxed">
+                            Uncovered by Citizen Lab, <strong>AdFection</strong> leverages traffic injection on unencrypted ad networks or ISP manipulation. Loading an ad banner triggers a silent redirect injecting spyware into memory.
+                        </p>
+                    </div>
+
+                    <!-- One-Click & MitM -->
+                    <div class="bg-kaspersky-card border border-kaspersky-border rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                        <div class="flex items-center gap-3 mb-4 text-kaspersky-accent">
+                            <i data-lucide="link" class="w-6 h-6"></i>
+                            <h3 class="text-xl font-bold text-white">One-Click & Rogue Towers</h3>
+                        </div>
+                        <p class="text-kaspersky-lightText/80 text-xs sm:text-sm leading-relaxed">
+                            SMS smishing combined with operator-level network interception or IMSI-catchers (fake cell towers) to force spyware payload downloads.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hardening Matrix -->
+                <div class="bg-kaspersky-card border border-kaspersky-border rounded-2xl p-6 sm:p-8 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-kaspersky-accent"></i>
+                        Hardening & Mitigation Guide (Multi-OS)
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- iOS / iPadOS / watchOS -->
+                        <div class="bg-kaspersky-dark border border-kaspersky-border rounded-xl p-5">
+                            <h4 class="text-white font-bold text-base mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-kaspersky-accent"></span> iOS / iPadOS / watchOS
+                            </h4>
+                            <ul class="text-xs text-kaspersky-lightText/80 space-y-2 list-disc list-inside">
+                                <li>Enable <strong>Lockdown Mode</strong> to block complex attachments & WebKit features.</li>
+                                <li>Disable iMessage and FaceTime if under active targeted threat.</li>
+                                <li>Keep OS updated to apply latest CoreGraphics/WebKit security patches.</li>
+                                <li>Reboot device daily to clear volatile in-memory exploits.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Android -->
+                        <div class="bg-kaspersky-dark border border-kaspersky-border rounded-xl p-5">
+                            <h4 class="text-white font-bold text-base mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-kaspersky-accent"></span> Android OS
+                            </h4>
+                            <ul class="text-xs text-kaspersky-lightText/80 space-y-2 list-disc list-inside">
+                                <li>Disable 2G/GSM in cellular settings to defeat IMSI-catchers.</li>
+                                <li>Enable Google Advanced Protection Program.</li>
+                                <li>Turn off auto-download for media attachments in messaging apps.</li>
+                                <li>Run periodic MVT scans against ADB dumps and logcat backups.</li>
+                            </ul>
+                        </div>
+
+                        <!-- macOS / Windows -->
+                        <div class="bg-kaspersky-dark border border-kaspersky-border rounded-xl p-5">
+                            <h4 class="text-white font-bold text-base mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-kaspersky-accent"></span> macOS & Windows
+                            </h4>
+                            <ul class="text-xs text-kaspersky-lightText/80 space-y-2 list-disc list-inside">
+                                <li>On macOS, enable Lockdown Mode in System Settings.</li>
+                                <li>Use privacy browsers with strict ad-blockers to mitigate AdFection.</li>
+                                <li>Enforce encrypted DNS (DoH/DoT) via Cloudflare or Quad9.</li>
+                                <li>Filter outbound connections using interactive firewalls (LuLu / Defender WAF).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Forensic Tools -->
         <section id="herramientas" class="py-20 bg-kaspersky-card/40 border-b border-kaspersky-border">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -343,10 +473,10 @@
                             <i data-lucide="wrench" class="w-3.5 h-3.5"></i> Open Detection Suite
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-                            Forensic Analysis and Mobile Verification Tools
+                            Forensic Analysis & Mobile Verification Tools
                         </h2>
                         <p class="text-kaspersky-lightText/90 leading-relaxed text-sm sm:text-base">
-                            Direct integration with the <strong class="text-white">Mobile Verification Toolkit (MVT)</strong> from Amnesty International and the indicator of compromise (IoC) scanners developed by leading laboratories such as Kaspersky and Citizen Lab.
+                            Direct integration with Amnesty International's <strong class="text-white">Mobile Verification Toolkit (MVT)</strong> and IoC scanners from Kaspersky GReAT and Citizen Lab.
                         </p>
 
                         <div class="space-y-4 pt-2">
@@ -356,7 +486,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-white font-bold text-sm">MVT (Mobile Verification Toolkit)</h4>
-                                    <p class="text-xs text-kaspersky-muted mt-0.5">Analyzes iTunes backups, Android dumps (ADB) and SQLite databases in search of Pegasus artifacts.</p>
+                                    <p class="text-xs text-kaspersky-muted mt-0.5">Inspects iTunes backups, Android ADB dumps, and SQLite databases for Pegasus artifacts.</p>
                                 </div>
                             </div>
 
@@ -366,18 +496,18 @@
                                 </div>
                                 <div>
                                     <h4 class="text-white font-bold text-sm">Kaspersky Triangle Check / IoC Scanners</h4>
-                                    <p class="text-xs text-kaspersky-muted mt-0.5">Automatic utility to detect traces of the "Operation Triangulation" operation in OS dumps.</p>
+                                    <p class="text-xs text-kaspersky-muted mt-0.5">Automated tool to identify traces of "Operation Triangulation" in mobile backups.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Code / Quickstart Interactive Window -->
+                    <!-- Code Quickstart -->
                     <div class="lg:col-span-6">
                         <div class="bg-kaspersky-dark rounded-2xl border border-kaspersky-border p-6 shadow-2xl space-y-4">
                             <div class="flex justify-between items-center border-b border-kaspersky-border pb-4">
                                 <span class="text-xs font-bold text-white flex items-center gap-2">
-                                    <i data-lucide="terminal" class="w-4 h-4 text-kaspersky-accent"></i> Quick Start Guide for MVT
+                                    <i data-lucide="terminal" class="w-4 h-4 text-kaspersky-accent"></i> MVT Quick Execution Guide
                                 </span>
                                 <span class="text-[10px] bg-kaspersky-card px-2 py-1 rounded text-kaspersky-muted">Python 3.10+</span>
                             </div>
@@ -388,21 +518,21 @@
                                     $ pip install mvt
                                 </div>
 
-                                <p class="text-kaspersky-muted"># 2. Download latest IoCs from Pegasus & Predator</p>
+                                <p class="text-kaspersky-muted"># 2. Download latest Pegasus & Predator IoCs</p>
                                 <div class="bg-kaspersky-card p-3 rounded border border-kaspersky-border text-kaspersky-accent font-semibold">
                                     $ mvt-ios download-iocs
                                 </div>
 
-                                <p class="text-kaspersky-muted"># 3. Analyze previously extracted iOS backup</p>
+                                <p class="text-kaspersky-muted"># 3. Analyze extracted iOS backup</p>
                                 <div class="bg-kaspersky-card p-3 rounded border border-kaspersky-border text-kaspersky-accent font-semibold">
                                     $ mvt-ios check-backup --iocs iocs/pegasus.stix2 /path/to/backup
                                 </div>
                             </div>
 
                             <div class="pt-2 flex justify-between items-center text-xs">
-                                <span class="text-kaspersky-muted">Need technical assistance?</span>
+                                <span class="text-kaspersky-muted">Need technical help?</span>
                                 <a href="https://github.com/mvt-project/mvt" target="_blank" class="text-kaspersky-accent font-bold hover:underline flex items-center gap-1">
-                                    View Official MVT Repo <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                    Official MVT Repo <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
                                 </a>
                             </div>
                         </div>
@@ -412,15 +542,15 @@
             </div>
         </section>
 
-        <!-- Section 3: Ecosystem & Collaboration Partners -->
+        <!-- Section 4: Ecosystem -->
         <section id="ecosistema" class="py-20 border-b border-kaspersky-border">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-                        Global <span class="text-kaspersky-accent">Collaboration Ecosystem</span>
+                        Global Collaboration <span class="text-kaspersky-accent">Ecosystem</span>
                     </h2>
                     <p class="text-kaspersky-lightText/80 text-base">
-                        Inspired by the NoMoreRansom model, NoMorePegasus aims to consolidate a coordinated defense network between the private sector, civil organizations, and global agencies.
+                        Modeled after NoMoreRansom, NoMorePegasus aims to consolidate a defense network between NGOs, private security firms, and CERTs.
                     </p>
                 </div>
 
@@ -458,17 +588,17 @@
             </div>
         </section>
 
-        <!-- Section 4: Contact & Proposals Section -->
+        <!-- Section 5: Contact & Proposals -->
         <section id="contacto" class="py-20 bg-kaspersky-card/20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                 <div class="bg-kaspersky-card border border-kaspersky-border rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-kaspersky-accent/5 rounded-full blur-3xl pointer-events-none"></div>
 
                     <div class="text-center space-y-4 mb-10">
-                        <span class="text-xs font-bold uppercase tracking-widest text-kaspersky-accent">Join as a Partner</span>
-                        <h2 class="text-3xl font-extrabold text-white">Submission of Proposals and Partnerships</h2>
+                        <span class="text-xs font-bold uppercase tracking-widest text-kaspersky-accent">Join as an Ally</span>
+                        <h2 class="text-3xl font-extrabold text-white">Proposal & Partnership Submission</h2>
                         <p class="text-sm text-kaspersky-lightText/80 max-w-xl mx-auto">
-                            Do you represent a cybersecurity laboratory, a human rights agency, or are you an independent researcher? Get in touch to collaborate.
+                            Are you representing a security firm, human rights NGO, or academic lab? Reach out to collaborate.
                         </p>
                     </div>
 
@@ -476,7 +606,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">Name / Organization</label>
-                                <input type="text" required placeholder="E.g. Security Research Lab" class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors">
+                                <input type="text" required placeholder="e.g. Security Research Lab" class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">Institutional Email</label>
@@ -485,19 +615,19 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">Type of Entity</label>
+                            <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">Entity Type</label>
                             <select class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors">
                                 <option>Human Rights Organization / NGO</option>
-                                <option>Private Cybersecurity Company / EDR</option>
-                                <option>Academic Research Laboratory</option>
-                                <option>Cybersecurity Agency or Institution</option>
-                                <option>Independent Researcher / Malware Analyst</option>
+                                <option>Private Security Vendor / EDR</option>
+                                <option>Academic Research Lab</option>
+                                <option>Cybersecurity Agency / CERT</option>
+                                <option>Independent Malware Analyst</option>
                             </select>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">Message / Summary of the Proposal</label>
-                            <textarea rows="4" required placeholder="Describe briefly how you would like to collaborate with NoMorePegasus..." class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors"></textarea>
+                            <label class="block text-xs font-semibold text-kaspersky-lightText mb-2">Proposal Summary</label>
+                            <textarea rows="4" required placeholder="Briefly describe how you wish to collaborate with NoMorePegasus..." class="w-full bg-kaspersky-dark border border-kaspersky-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-kaspersky-accent transition-colors"></textarea>
                         </div>
 
                         <button type="submit" class="w-full bg-kaspersky-accent text-kaspersky-dark font-bold py-4 rounded-xl hover:bg-kaspersky-accentHover transition-all shadow-lg text-center flex items-center justify-center gap-2">
@@ -510,7 +640,7 @@
         </section>
     </main>
 
-    <!-- Footer Style Kaspersky -->
+    <!-- Footer -->
     <footer class="bg-kaspersky-dark border-t border-kaspersky-border py-12 text-kaspersky-muted text-xs">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -522,23 +652,22 @@
                         <span class="font-bold text-white text-base">NoMorePegasus</span>
                     </div>
                     <p class="text-kaspersky-muted leading-relaxed">
-                        A voluntary, collaborative initiative to demystify and detect state-sponsored mobile cyberweapons.
+                        Open collaborative initiative for demystifying and detecting state-grade mobile spyware.
                     </p>
                 </div>
 
                 <div>
                     <h5 class="text-white font-bold mb-3">Resources</h5>
                     <ul class="space-y-2">
-                        <li><a href="https://github.com/mvt-project/mvt" target="_blank" class="hover:text-kaspersky-accent">MVT Github Repo</a></li>
+                        <li><a href="https://github.com/mvt-project/mvt" target="_blank" class="hover:text-kaspersky-accent">MVT GitHub Repo</a></li>
                         <li><a href="https://github.com/KasperskyLab/triangle_check" target="_blank" class="hover:text-kaspersky-accent">Kaspersky TriangleCheck</a></li>
                         <li><a href="https://citizenlab.ca" target="_blank" class="hover:text-kaspersky-accent">Citizen Lab Reports</a></li>
                         <li><a href="https://www.accessnow.org/help/" target="_blank" class="hover:text-kaspersky-accent">Access Now Helpline</a></li>
-                        <li><a href="https://www.amnesty.org/en/latest/research/2021/09/forensic-analysis-of-pegasus-spyware/" target="_blank" class="hover:text-kaspersky-accent">Amnesty Forensic Report</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h5 class="text-white font-bold mb-3">Legal & Ethical</h5>
+                    <h5 class="text-white font-bold mb-3">Legal & Ethics</h5>
                     <ul class="space-y-2">
                         <li><a href="#" class="hover:text-kaspersky-accent">Responsible Use of IoCs</a></li>
                         <li><a href="#" class="hover:text-kaspersky-accent">Privacy Policy</a></li>
@@ -548,12 +677,12 @@
 
                 <div>
                     <h5 class="text-white font-bold mb-3">Community</h5>
-                    <p class="mb-3">Join the public repository to submit new IoCs and YARA rules.</p>
+                    <p class="mb-3">Join our GitHub repository to submit new IoCs and YARA rules.</p>
                     <div class="flex gap-3">
-                        <a href="#" class="p-2 bg-kaspersky-card rounded border border-kaspersky-border text-white hover:text-kaspersky-accent">
+                        <a href="https://github.com" target="_blank" class="p-2 bg-kaspersky-card rounded border border-kaspersky-border text-white hover:text-kaspersky-accent">
                             <i data-lucide="github" class="w-4 h-4"></i>
                         </a>
-                        <a href="#" class="p-2 bg-kaspersky-card rounded border border-kaspersky-border text-white hover:text-kaspersky-accent">
+                        <a href="https://x.com" target="_blank" class="p-2 bg-kaspersky-card rounded border border-kaspersky-border text-white hover:text-kaspersky-accent">
                             <i data-lucide="twitter" class="w-4 h-4"></i>
                         </a>
                     </div>
@@ -561,13 +690,51 @@
             </div>
 
             <div class="pt-8 border-t border-kaspersky-border flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p>© 2026 NoMorePegasus Initiative. Inspired by NoMoreRansom. Educational and defensive cybersecurity project.</p>
-                <p>Built for the protection of Human Rights.</p>
+                <p>© 2026 NoMorePegasus Initiative. Inspired by NoMoreRansom. Educational and Defense Project.</p>
+                <p>Built for Human Rights Protection.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Initialize Lucide Icons & Mobile Menu Toggle -->
+    <!-- Floating AI Assistant Button & Modal -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="ai-chat-btn" onclick="toggleChatbot()" class="bg-[#00f2a1] text-[#011e15] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform font-bold flex items-center gap-2 border-2 border-white">
+            <i data-lucide="bot" class="w-6 h-6"></i>
+            <span class="hidden sm:inline text-sm">Ask PegasusSentinel</span>
+        </button>
+
+        <!-- Chatbot Modal Window -->
+        <div id="ai-chat-modal" class="hidden fixed bottom-20 right-6 w-80 sm:w-96 bg-[#032b1f] border border-emerald-500/50 rounded-2xl shadow-2xl p-4 flex flex-col h-[450px] z-50">
+            <div class="flex items-center justify-between border-b border-emerald-800 pb-3 mb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-[#00f2a1] animate-pulse"></div>
+                    <h4 class="font-bold text-white text-sm">PegasusSentinel AI</h4>
+                </div>
+                <button onclick="toggleChatbot()" class="text-emerald-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto space-y-3 p-1 text-xs text-emerald-100 mb-3">
+                <div class="bg-[#011e15] p-3 rounded-xl border border-emerald-800">
+                    <strong>🤖 PegasusSentinel:</strong> Hello! I am the NoMorePegasus Assistant. Ask me anything about Zero-Click exploits, MVT, AdFection, or mobile hardening protocols!
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="flex items-center gap-2">
+                <input type="text" id="chat-input" placeholder="Ask a technical question..." 
+                       onkeypress="if(event.key==='Enter') sendChatMessage()"
+                       class="flex-1 bg-[#011e15] border border-emerald-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#00f2a1]">
+                <button onclick="sendChatMessage()" class="bg-[#00f2a1] text-[#011e15] p-2 rounded-lg font-bold hover:bg-emerald-400">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Execution -->
     <script>
         lucide.createIcons();
 
@@ -577,6 +744,47 @@
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        function toggleChatbot() {
+            const modal = document.getElementById('ai-chat-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const container = document.getElementById('chat-messages');
+            const userText = input.value.trim();
+
+            if (!userText) return;
+
+            const userDiv = document.createElement('div');
+            userDiv.className = 'bg-[#00f2a1]/10 text-emerald-200 p-3 rounded-xl border border-emerald-500/30 text-right';
+            userDiv.innerHTML = `<strong>You:</strong> ${userText}`;
+            container.appendChild(userDiv);
+
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            setTimeout(() => {
+                const botDiv = document.createElement('div');
+                botDiv.className = 'bg-[#011e15] p-3 rounded-xl border border-emerald-800 text-emerald-100';
+                
+                let response = "Pegasus and similar spyware utilize Zero-Click exploits targeting unpatched vulnerabilities in image/media parsers. Enabling Lockdown Mode and performing regular MVT checks is strongly recommended.";
+                
+                const textLower = userText.toLowerCase();
+                if (textLower.includes("mvt") || textLower.includes("mobile verification")) {
+                    response = "MVT (Mobile Verification Toolkit) is an open-source tool developed by Amnesty International to analyze Android and iOS backups for indicators of compromise (IoCs) left by spyware like Pegasus or Predator.";
+                } else if (textLower.includes("adfection") || textLower.includes("ad")) {
+                    response = "AdFection is an attack vector uncovered by Citizen Lab where rogue ad-networks inject Zero-Click payloads directly when unencrypted ad banners load inside mobile apps.";
+                } else if (textLower.includes("lockdown") || textLower.includes("hardening")) {
+                    response = "Lockdown Mode (iOS/macOS) severely restricts device functionality (blocking most message attachments, web technologies, and incoming calls from unknown users) to defeat Zero-Click exploits.";
+                }
+
+                botDiv.innerHTML = `<strong>🤖 PegasusSentinel:</strong> ${response}`;
+                container.appendChild(botDiv);
+                container.scrollTop = container.scrollHeight;
+            }, 600);
+        }
     </script>
 </body>
 </html>
